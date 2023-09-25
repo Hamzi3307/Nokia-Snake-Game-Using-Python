@@ -4,26 +4,26 @@ from food import Food
 from score import Score
 import time
 
-my_scr = Screen()
-my_scr.setup(width=600, height=600)
-my_scr.bgcolor("black")
-my_scr.title("Nokia Snake Game")
-my_scr.tracer(0)
+screen = Screen()
+screen.setup(width=600, height=600)
+screen.bgcolor("black")
+screen.title("Nokia Snake Game")
+screen.tracer(0)
 
 snake = Snake()
 food = Food()
 score = Score()
 
 
-my_scr.listen()
-my_scr.onkey(snake.up, "Up")
-my_scr.onkey(snake.down, "Down")
-my_scr.onkey(snake.right, "Right")
-my_scr.onkey(snake.left, "Left")
+screen.listen()
+screen.onkey(snake.up, "Up")
+screen.onkey(snake.down, "Down")
+screen.onkey(snake.right, "Right")
+screen.onkey(snake.left, "Left")
 
 game_on = True
 while game_on:
-    my_scr.update()
+    screen.update()
     time.sleep(0.1)
     snake.move()
     
@@ -48,4 +48,4 @@ while game_on:
             snake.reset()
             food.refresh()
 
-my_scr.exitonclick()
+screen.exitonclick()

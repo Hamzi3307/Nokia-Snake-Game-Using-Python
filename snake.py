@@ -33,8 +33,8 @@ class Snake :
         self.segments[0].forward(20)
     
     def reset(self):
-        for seg in self.segments:
-            seg.goto(1000,1000)
+        for segment in self.segments:
+            segment.goto(1000,1000)
         self.segments.clear()
         self.createSnake()
     
