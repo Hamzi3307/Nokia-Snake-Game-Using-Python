@@ -9,17 +9,27 @@ class Score(Turtle):
         self.penup()
         self.color("green")
         self.score = 0
+        with open("highscore.txt", mode="r") as file:
+            self.highscore = int(file.read())
         self.goto(0, 270)
-        self.show_score()
+        self.update_score()
         
-    def show_score(self):
-        self.write(f"Score: {self.score}", align=ALIGN, font=FONT)
-
-    def game_over(self):
-        self.goto(0,0)
-        self.write("GAME OVER", align=ALIGN, font=FONT)
-
     def update_score(self):
-        self.score += 1
         self.clear()
-        self.show_score()
+        self.write(f"Score: {self.score} High Score: {self.highscore}", align=ALIGN, font=FONT)
+
+    # def game_over(self):
+    #     self.goto(0,0)
+    #     self.write("GAME OVER", align=ALIGN, font=FONT)
+    
+    def reset(self):
+        if self.score > self.highscore:
+            self.highscore = self.score
+            with open("highscore.txt", mode="w") as new:
+                new.write(f"{self.highscore}")
+            self.score = 0
+            self.update_score()
+
+    def increase_score(self):
+        self.score += 1
+        self.update_score()
